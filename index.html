@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Text Converter</title>
+		<meta charset="utf-8"/>
+		<script type="text/javascript" src="script.js"></script>
+		<link href="style.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<h1>
+			Text Converter
+		</h1>
+		<div align="center">
+			<div style="float: left; margin-left: 10vw;">
+				<p>
+					Input
+				</p>
+				<textarea type="text" id="text" oninput="output()" style="width: 25vw; height: 25vh;"></textarea>
+			</div>
+			<div style="display: inline-block;">
+				<p>
+					Style
+				</p>
+				<select name="style" id="style" onchange="output()" style="width: 10vw;">
+					<option>Circle</option>
+					<option>Circle (Negative)</option>
+					<option>Squared</option>
+					<option>Squared (Negative)</option>
+					<option>Fullwidth</option>
+					<option>Small</option>
+					<option>Bold</option>
+					<option>Bold Italic</option>
+					<option>Strikethrough</option>
+					<option>Underline</option>
+					<option>Upside down</option>
+					<option>Sans Serif</option>
+					<option>Sans Serif Bold</option>
+					<option>Sans Serif Bold Italic</option>
+					<option>Sans Serif Italic</option>
+					<option>Monspace</option>
+					<option>Double Underline</option>
+					<option>Overline</option>
+					<option>Double Overline</option>
+					<option>Script Bold</option>
+					<option>Fraktur Bold</option>
+					<option>Double Struck</option>
+					<option>Parenthesized</option>
+				</select>
+			</div>
+			<div style="float: right; margin-right: 10vw;">
+				<p>
+					Output
+				</p>
+				<textarea type="text" id="output" style="width: 25vw; height: 25vh;"/></textarea>
+			</div>
+		</div>
+	</body>
+</html>
