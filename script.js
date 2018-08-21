@@ -47,6 +47,28 @@ var operations =
 	[map, tableParenthesized]
 ];
 
+function load()
+{
+	var style = document.getElementById("style");
+	style.addEventListener("wheel", wheelEvent);
+}
+
+function wheelEvent(e)
+{
+	var style = document.getElementById("style");
+	
+	if(e.deltaY > 0)
+	{
+		style.selectedIndex = Math.min(style.length - 1, style.selectedIndex + 1);
+	}
+	else
+	{
+		style.selectedIndex = Math.max(0, style.selectedIndex - 1);
+	}
+	
+	output();
+}
+
 function output()
 {
 	var style = document.getElementById("style");
@@ -64,7 +86,7 @@ function output()
 
 function convert(func, param)
 {
-	var input = document.getElementById("text");
+	var input = document.getElementById("input");
 	var output = document.getElementById("output");
 	output.value = func(input.value, param);
 }
