@@ -26,6 +26,7 @@ var operations =
 	[map, tableCircleNegative],
 	[map, tableSquared],
 	[map, tableSquaredNegative],
+	[mapEmoji, tableSquaredNegative],
 	[map, tableFullwidth],
 	[map, tableSmallCaps],
 	[map, tableBold],
@@ -141,6 +142,18 @@ function map(input, table)
 	for(x = 0; x < input.length; x++)
 	{
 		result += mapCodePoint(input.codePointAt(x), table);
+	}
+	
+	return result;
+}
+
+function mapEmoji(input, table)
+{
+	var result = "";
+	
+	for(x = 0; x < input.length; x++)
+	{
+		result += mapCodePoint(input.codePointAt(x), table) + String.fromCodePoint(65039); //Variation Sector 16
 	}
 	
 	return result;
