@@ -31,7 +31,8 @@ var operations =
 	[map, tableSmallCaps],
 	[map, tableBold],
 	[map, tableBoldItalic],
-	[insertAfter, String.fromCharCode(0x0336)], //strikethrough
+	[insertAfter, String.fromCharCode(0x0335)], //strikethrough
+	[insertAfter, String.fromCharCode(0x0334)], //strikethrough waving
 	[insertAfter, String.fromCharCode(0x0332)], //underline
 	[mapReversed, tableUpsideDown],
 	[map, tableSansSerif],
@@ -42,10 +43,16 @@ var operations =
 	[insertAfter, String.fromCharCode(0x0333)], //double underline
 	[insertAfter, String.fromCharCode(0x0305)], //overline
 	[insertAfter, String.fromCharCode(0x033F)], //double overline
+	[insertAfter, String.fromCharCode(0x0337)], //slashed
+	[insertAfter, String.fromCharCode(0x0338)], //slashed big
 	[map, tableScriptBold],
 	[map, tableFrakturBold],
 	[map, tableDoubleStruck],
-	[map, tableParenthesized]
+	[map, tableParenthesized],
+	[insertBefore, String.fromCharCode(0x20DD)], //bubbles
+	[insertBetween, String.fromCharCode(0x20E0)], //bubbles crossed
+	[insertBetween, String.fromCharCode(0x20DE)], //boxed
+	[insertBetween, String.fromCharCode(0x20DF)] //diamonds
 ];
 
 function load()
@@ -123,6 +130,35 @@ function insertAfter(input, codePoint)
 	return result;
 }
 
+function insertBefore(input, codePoint)
+{
+	var result = "";
+	
+	for(x = 0; x < input.length; x++)
+	{
+		result += codePoint + input.charAt(x);
+	}
+	
+	return result;
+}
+
+function insertBetween(input, codePoint)
+{
+	if(input.length < 2)
+	{
+		return input;
+	}
+	
+	var result = input.charAt(0);
+	
+	for(x = 1; x < input.length; x++)
+	{
+		result += codePoint + input.charAt(x);
+	}
+	
+	return result;
+}
+
 function mapReversed(input, table)
 {
 	var result = "";
@@ -150,10 +186,11 @@ function map(input, table)
 function mapEmoji(input, table)
 {
 	var result = "";
+	var variationSelector16 = String.fromCodePoint(0xFE0F);
 	
 	for(x = 0; x < input.length; x++)
 	{
-		result += mapCodePoint(input.codePointAt(x), table) + String.fromCodePoint(65039); //Variation Sector 16
+		result += mapCodePoint(input.codePointAt(x), table) + variationSelector16;
 	}
 	
 	return result;
