@@ -31,7 +31,7 @@ var operations =
 	[map, tableSmallCaps],
 	[map, tableBold],
 	[map, tableBoldItalic],
-	[insertAfter, String.fromCharCode(0x0335)], //strikethrough
+	[insertAfter, String.fromCharCode(0x0336)], //strikethrough
 	[insertAfter, String.fromCharCode(0x0334)], //strikethrough waving
 	[insertAfter, String.fromCharCode(0x0332)], //underline
 	[mapReversed, tableUpsideDown],
